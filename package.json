@@ -1,6 +1,6 @@
 {
   "name": "mkcom",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "main": "mkcom.js",
   "scripts": {
     "start": "babel-node src/mkcom.js",
@@ -12,7 +12,7 @@
     "url": "http://www.findjo.com"
   },
   "license": "ISC",
-  "description": "A little tools to quickly create folders structure for components",
+  "description": "A little tools to quickly make folders/files for components structure layout",
   "bin": {
     "mkcom": "mkcom.js"
   },

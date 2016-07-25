@@ -19,5 +19,8 @@ Usage: mkcom -c
 ```
 
 ```
-Example: mkcom -c Tab -p app/components/
+Example: mkcom -c Test
 ```
+
+this will create folders/files and default index.js to be:
+![alt tag](http://www.pixhoster.info/f/2016-07/d4fc95a3138bbb0707617499cbd468fc.png)

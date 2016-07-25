@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 
-var fs = require('fs');
-var mkdirp = require('mkdirp');
+const fs = require('fs');
+const mkdirp = require('mkdirp');
 
 /**
  * show help message
  */
-var logHelp = () => {
-	var message = `
+const logHelp = () => {
+	let message = `
   Usage: mkcom -c
     -c, --create        create the folders and files in Relative Path.
     -p, --path          create the folders and files to custom path.
@@ -18,27 +18,45 @@ var logHelp = () => {
 }
 
 /**
+ * create es6 class template
+ */
+const strClass = (keyword) => {
+	return `
+import './styles/styles.scss';
+import React, { Component } from 'react';
+
+class ${keyword} extends Component {
+    render() {
+        
+    }
+};
+
+export default ${keyword};
+	`.trim();
+}
+
+/**
  * create folders and files
  * @param  {String} keyword [foldername]
  */
-var creatFoldersFiles = (keyword) => {
-	var argvs = process.argv.slice(4);
+const creatFoldersFiles = (keyword) => {
+	let argvs = process.argv.slice(4);
 
-	var path;
+	let path;
 	if (argvs[0] === '-p' || argvs[0] === '--path') {
-		var lastLetter = Array.from(argvs[1]).pop();
+		let lastLetter = Array.from(argvs[1]).pop();
 		path = lastLetter === '/' ? `${argvs[1] + keyword}` : `${argvs[1] + '/' + keyword}`;
 	} else {
 		path = `./${keyword}`;
 	}
 
-	var createMainFolder = () => {
+	let createMainFolder = () => {
 		mkdirp(`${path}`, (err) => {
 			if (err) console.log(err);
 		})
 	}
 	
-	var creatSubFolders =() => {
+	let creatSubFolders =() => {
 		//creat style folder & styles.scss
 		mkdirp(`${path}/style/`, (err) => {
 			if (err) {
@@ -58,7 +76,7 @@ var creatFoldersFiles = (keyword) => {
 			if (err) {
 				console.log(err)
 			} else {
-				fs.writeFileSync(`${path}/index.js`, '');
+				fs.writeFileSync(`${path}/index.js`, strClass(keyword));
 			}
 		})
 	}
@@ -66,10 +84,10 @@ var creatFoldersFiles = (keyword) => {
 	createMainFolder(creatSubFolders());
 }
 
-var parseArgvs = () => {
-	var argvs = process.argv.slice(2);
+const parseArgvs = () => {
+	let argvs = process.argv.slice(2);
 
-	var checkArg = () => {
+	let checkArg = () => {
 		if (argvs[0] && argvs[0][0] === '-') {
 			switch (argvs[0]) {
 				case '-c':
@@ -93,7 +111,7 @@ var parseArgvs = () => {
 }
 
 
-var run = () => {
+const run = () => {
 	parseArgvs();
 }
 

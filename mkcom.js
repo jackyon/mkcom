@@ -1,13 +1,14 @@
+#!/usr/bin/env node
 'use strict';
 
-let fs = require('fs');
-let mkdirp = require('mkdirp');
+var fs = require('fs');
+var mkdirp = require('mkdirp');
 
 /**
  * show help message
  */
-const logHelp = () => {
-	const message = `
+var logHelp = () => {
+	var message = `
   Usage: mkcom -c
     -c, --create        create the folders and files in Relative Path.
     -p, --path          create the folders and files to custom path.
@@ -21,24 +22,24 @@ const logHelp = () => {
  * create folders and files
  * @param  {String} keyword [foldername]
  */
-const creatFoldersFiles = keyword => {
-	const argvs = process.argv.slice(4);
+var creatFoldersFiles = keyword => {
+	var argvs = process.argv.slice(4);
 
-	let path;
+	var path;
 	if (argvs[0] === '-p' || argvs[0] === '--path') {
-		let lastLetter = Array.from(argvs[1]).pop();
+		var lastLetter = Array.from(argvs[1]).pop();
 		path = lastLetter === '/' ? `${ argvs[1] + keyword }` : `${ argvs[1] + '/' + keyword }`;
 	} else {
 		path = `./${ keyword }`;
 	}
 
-	const createMainFolder = () => {
+	var createMainFolder = () => {
 		mkdirp(`${ path }`, err => {
 			if (err) console.log(err);
 		});
 	};
 
-	const creatSubFolders = () => {
+	var creatSubFolders = () => {
 		//creat style folder & styles.scss
 		mkdirp(`${ path }/style/`, err => {
 			if (err) {
@@ -66,10 +67,10 @@ const creatFoldersFiles = keyword => {
 	createMainFolder(creatSubFolders());
 };
 
-const parseArgvs = () => {
-	const argvs = process.argv.slice(2);
+var parseArgvs = () => {
+	var argvs = process.argv.slice(2);
 
-	const checkArg = () => {
+	var checkArg = () => {
 		if (argvs[0] && argvs[0][0] === '-') {
 			switch (argvs[0]) {
 				case '-c':
@@ -92,7 +93,7 @@ const parseArgvs = () => {
 	checkArg();
 };
 
-const run = () => {
+var run = () => {
 	parseArgvs();
 };
 

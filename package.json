@@ -1,15 +1,28 @@
 {
   "name": "mkcom",
-  "version": "1.0.0",
-  "main": "index.js",
+  "version": "0.0.4",
+  "main": "mkcom.js",
   "scripts": {
-    "clean:build": "rimraf lib",
-    "start": "babel-node src/index.js",
-    "build": "npm run clean:build && babel src --out-dir lib"
+    "start": "babel-node src/mkcom.js",
+    "build": "babel src --out-dir ./"
   },
-  "author": "",
+  "author": {
+    "name": "jackyon",
+    "email": "36582344@qq.com",
+    "url": "http://www.findjo.com"
+  },
   "license": "ISC",
-  "description": "",
+  "description": "A little tools to quickly create folders structure for components",
+  "bin": {
+    "mkcom": "mkcom.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jackyon/mkcom"
+  },
+  "dependencies": {
+    "mkdirp": "^0.5.1"
+  },
   "devDependencies": {
     "babel-cli": "^6.7.5",
     "babel-core": "^6.7.6",
@@ -17,8 +30,6 @@
     "babel-plugin-transform-es2015-modules-commonjs": "^6.7.4",
     "babel-plugin-transform-es2015-parameters": "^6.7.0",
     "babel-plugin-transform-es2015-spread": "^6.6.5",
-    "babel-plugin-transform-strict-mode": "^6.6.5",
-    "mkdirp": "^0.5.1",
-    "rimraf": "^2.5.4"
+    "babel-plugin-transform-strict-mode": "^6.6.5"
   }
 }

@@ -1,0 +1,24 @@
+{
+  "name": "mkcom",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "clean:build": "rimraf lib",
+    "start": "babel-node src/index.js",
+    "build": "npm run clean:build && babel src --out-dir lib"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "babel-cli": "^6.7.5",
+    "babel-core": "^6.7.6",
+    "babel-plugin-transform-es2015-destructuring": "^6.6.5",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.7.4",
+    "babel-plugin-transform-es2015-parameters": "^6.7.0",
+    "babel-plugin-transform-es2015-spread": "^6.6.5",
+    "babel-plugin-transform-strict-mode": "^6.6.5",
+    "mkdirp": "^0.5.1",
+    "rimraf": "^2.5.4"
+  }
+}

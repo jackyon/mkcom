@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-
+import pjson from './package.json';
 const fs = require('fs');
 const mkdirp = require('mkdirp');
 
@@ -16,6 +16,23 @@ const logHelp = () => {
 	`
 	console.log(message);
 }
+
+/**
+ * log version
+ */
+const logVersion = () => {
+	console.log(pjson.version);
+}
+
+/**
+ * exit process
+ */
+const exit = (code) => {
+	if(!code) {
+		code = 0;
+	}
+	process.exit(code);
+};
 
 /**
  * create es6 class template
@@ -58,11 +75,11 @@ const creatFoldersFiles = (keyword) => {
 	
 	let creatSubFolders =() => {
 		//creat style folder & styles.scss
-		mkdirp(`${path}/style/`, (err) => {
+		mkdirp(`${path}/styles/`, (err) => {
 			if (err) {
 				console.log(err)
 			} else {
-				fs.writeFileSync(`${path}/style/style.scss`, '');
+				fs.writeFileSync(`${path}/styles/styles.scss`, '');
 			};
 		})
 		
@@ -92,16 +109,23 @@ const parseArgvs = () => {
 			switch (argvs[0]) {
 				case '-c':
 				case '--create':
-					creatFoldersFiles(argvs[1])
+					creatFoldersFiles(argvs[1]);
 					break;
 
 				case '-h':
 				case '--help':
 					logHelp();
+	      			exit();
+					break;
+
+				case '-v':
+				case '--version':
+					logVersion();
+	      			exit();
 					break;
 
 				default:
-					creatFoldersFiles(argvs[1])
+					creatFoldersFiles(argvs[1]);
 					break;
 			}
 		}

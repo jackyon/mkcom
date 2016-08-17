@@ -1,6 +1,12 @@
 #!/usr/bin/env node
 'use strict';
 
+var _package = require('./package.json');
+
+var _package2 = _interopRequireDefault(_package);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 const fs = require('fs');
 const mkdirp = require('mkdirp');
 
@@ -19,6 +25,23 @@ const logHelp = () => {
 };
 
 /**
+ * log version
+ */
+const logVersion = () => {
+	console.log(_package2.default.version);
+};
+
+/**
+ * exit process
+ */
+const exit = code => {
+	if (!code) {
+		code = 0;
+	}
+	process.exit(code);
+};
+
+/**
  * create es6 class template
  */
 const strClass = keyword => {
@@ -32,7 +55,7 @@ class ${ keyword } extends Component {
     }
 };
 
-export default ${ keyword }; 	
+export default ${ keyword };
 	`.trim();
 };
 
@@ -59,11 +82,11 @@ const creatFoldersFiles = keyword => {
 
 	let creatSubFolders = () => {
 		//creat style folder & styles.scss
-		mkdirp(`${ path }/style/`, err => {
+		mkdirp(`${ path }/styles/`, err => {
 			if (err) {
 				console.log(err);
 			} else {
-				fs.writeFileSync(`${ path }/style/style.scss`, '');
+				fs.writeFileSync(`${ path }/styles/styles.scss`, '');
 			};
 		});
 
@@ -99,6 +122,13 @@ const parseArgvs = () => {
 				case '-h':
 				case '--help':
 					logHelp();
+					exit();
+					break;
+
+				case '-v':
+				case '--version':
+					logVersion();
+					exit();
 					break;
 
 				default:

@@ -13,9 +13,10 @@ $ npm install mkcom -g
 
 ```
 Usage: mkcom -c
-  -c, --create        create the folders and files in Relative Path.
-  -p, --path          create the folders and files to custom path.
+  -c, --create        create folders/files in current path.
+  -p, --path          create folders/files to custom path.
   -h, --help          help message.
+  -v, --version       version number.
 ```
 
 ```
@@ -23,4 +24,4 @@ Example: mkcom -c Test
 ```
 
 this will create folders/files and default index.js to be:
-![alt tag](http://www.pixhoster.info/f/2016-07/d4fc95a3138bbb0707617499cbd468fc.png)
+![alt tag](http://www.pixhoster.info/f/2016-08/bf377752f7acfcf5068dd92e341b1659.png)

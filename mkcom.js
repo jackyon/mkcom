@@ -16,9 +16,10 @@ const mkdirp = require('mkdirp');
 const logHelp = () => {
 	let message = `
   Usage: mkcom -c
-    -c, --create        create the folders and files in Relative Path.
-    -p, --path          create the folders and files to custom path.
+    -c, --create        create folders/files in current path.
+    -p, --path          create folders/files to custom path.
     -h, --help          help message.
+    -v, --version       version number.
   Example: mkcom -c Tab -p app/components/
 	`;
 	console.log(message);
